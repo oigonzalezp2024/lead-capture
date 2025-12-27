@@ -1,3 +1,5 @@
+-- TABLAS --
+
 CREATE TABLE `lead_prospects` (
   `id_prospect` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),

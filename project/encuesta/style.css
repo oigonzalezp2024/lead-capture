@@ -1,0 +1,89 @@
+/* Reset completo para asegurar el centrado */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f3f4f6;
+    color: #1f2937;
+    
+    /* Configuración Flexbox para centrado total */
+    display: flex;
+    flex-direction: column; /* Organiza el contenido en columna */
+    justify-content: center; /* Centrado vertical */
+    align-items: center;     /* Centrado horizontal */
+}
+
+#survey-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 16px;
+    width: 90%;             /* Responsive para móviles */
+    max-width: 500px;       /* Límite para escritorio */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+    
+    /* Aseguramos que el card sea el foco */
+    margin: auto; 
+}
+
+/* Estilos de los elementos internos */
+#progress-bar {
+    background: #eee;
+    height: 6px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#fill {
+    background: #2563eb;
+    height: 100%;
+    width: 0%;
+    transition: width 0.4s ease;
+}
+
+.opt-btn {
+    display: block;
+    width: 100%;
+    padding: 1.2rem;
+    margin: 10px 0;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: left;
+    background: white;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.opt-btn:hover {
+    border-color: #2563eb;
+    background: #f0f7ff;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 1rem;
+    margin: 1.5rem 0;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+.next-btn {
+    background: #2563eb;
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 1.1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}

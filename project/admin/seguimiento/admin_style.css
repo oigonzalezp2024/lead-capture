@@ -1,0 +1,22 @@
+/* estilos de seguimiento */
+
+body { font-family: 'Inter', system-ui, sans-serif; margin: 0; display: flex; background: #f4f6f8; }
+.sidebar { width: 240px; background: #1e293b; color: white; height: 100vh; padding: 20px; position: fixed; }
+.content { margin-left: 280px; padding: 40px; width: 100%; }
+.main-table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+.main-table th { background: #f8fafc; padding: 15px; text-align: left; border-bottom: 2px solid #e2e8f0; color: #64748b; }
+.main-table td { padding: 15px; border-bottom: 1px solid #e2e8f0; }
+.badge { background: #dcfce7; color: #166534; padding: 4px 8px; border-radius: 6px; font-weight: 600; font-size: 12px; }
+.view-btn { background: #2563eb; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; }
+
+/* MODAL */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: none; justify-content: center; align-items: center; z-index: 1000; }
+.modal-card { background: white; width: 700px; max-height: 90vh; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+.modal-header { padding: 20px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; }
+.modal-body { padding: 30px; overflow-y: auto; }
+.info-section { background: #f1f5f9; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+.answer-item { margin-bottom: 20px; border-left: 4px solid #2563eb; padding-left: 15px; }
+.answer-item label { font-weight: bold; color: #475569; font-size: 13px; text-transform: uppercase; }
+.answer-item div { margin-top: 5px; font-size: 16px; color: #1e293b; }
+.close-btn { font-size: 24px; cursor: pointer; }
+.logout-link { color: #f87171; text-decoration: none; display: block; margin-top: 20px; }

@@ -1,0 +1,5 @@
+Options -Indexes
+Deny from all
+<Files "crear_admin.php">
+    Allow from all
+</Files>

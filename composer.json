@@ -1,0 +1,13 @@
+{
+    "name": "oigonzalezp2024/lead-capture-software",
+    "description": "Sistema de captación de leads con PHP y variables de entorno",
+    "type": "project",
+    "require": {
+        "vlucas/phpdotenv": "^5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}

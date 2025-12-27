@@ -28,8 +28,8 @@ $method = $_SERVER['REQUEST_METHOD'];
 // GET: Cargar configuración de la encuesta
 if ($method === 'GET') {
     try {
-        $questions = $pdo->query("SELECT * FROM survey_questions ORDER BY orden ASC")->fetchAll();
-        $options = $pdo->query("SELECT * FROM question_options")->fetchAll();
+        $questions = $pdo->query("SELECT * FROM lead_survey_questions ORDER BY orden ASC")->fetchAll();
+        $options = $pdo->query("SELECT * FROM lead_question_options")->fetchAll();
 
         foreach ($questions as &$q) {
             $q['options'] = array_values(array_filter($options, fn($opt) => $opt['id_question'] == $q['id_question']));
@@ -52,8 +52,8 @@ if ($method === 'POST') {
 
     $pdo->beginTransaction();
     try {
-        // 1. Insertar en tabla maestra 'prospects'
-        $stmtLead = $pdo->prepare("INSERT INTO prospects (full_name, email_whatsapp, profile_type) VALUES (?, ?, ?)");
+        // 1. Insertar en tabla maestra 'lead_prospects'
+        $stmtLead = $pdo->prepare("INSERT INTO lead_prospects (full_name, email_whatsapp, profile_type) VALUES (?, ?, ?)");
         $stmtLead->execute([
             $data['answers']['F1'] ?? 'Sin nombre',
             $data['answers']['F2'] ?? 'Sin contacto',
@@ -62,8 +62,8 @@ if ($method === 'POST') {
         
         $idProspect = $pdo->lastInsertId();
 
-        // 2. Insertar cada respuesta en 'survey_answers'
-        $stmtAns = $pdo->prepare("INSERT INTO survey_answers (id_prospect, question_key, answer_value) VALUES (?, ?, ?)");
+        // 2. Insertar cada respuesta en 'lead_survey_answers'
+        $stmtAns = $pdo->prepare("INSERT INTO lead_survey_answers (id_prospect, question_key, answer_value) VALUES (?, ?, ?)");
         foreach ($data['answers'] as $key => $val) {
             // Evitamos duplicar datos de contacto en la tabla de respuestas si no es necesario
             if (!in_array($key, ['F1', 'F2'])) {

@@ -33,22 +33,22 @@ $action = $_GET['action'] ?? '';
 
 // LISTAR TODOS LOS PROSPECTOS
 if ($action === 'list') {
-    $stmt = $pdo->query("SELECT * FROM prospects ORDER BY created_at DESC");
+    $stmt = $pdo->query("SELECT * FROM lead_prospects ORDER BY created_at DESC");
     echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
 }
 
 // DETALLE COMPLETO (INFORMACIÓN + RESPUESTAS)
 if ($action === 'detail' && isset($_GET['id'])) {
     // Info del prospecto
-    $stmtP = $pdo->prepare("SELECT * FROM prospects WHERE id_prospect = ?");
+    $stmtP = $pdo->prepare("SELECT * FROM lead_prospects WHERE id_prospect = ?");
     $stmtP->execute([$_GET['id']]);
     $prospect = $stmtP->fetch(PDO::FETCH_ASSOC);
 
     // Todas sus respuestas cruzadas con el texto de la pregunta (Insumo Sagrado)
     $stmtA = $pdo->prepare("
         SELECT a.question_key, a.answer_value, q.question_text 
-        FROM survey_answers a
-        LEFT JOIN survey_questions q ON a.question_key = q.codigo_pregunta
+        FROM lead_survey_answers a
+        LEFT JOIN lead_survey_questions q ON a.question_key = q.codigo_pregunta
         WHERE a.id_prospect = ?
         ORDER BY q.orden ASC
     ");

@@ -29,7 +29,7 @@ try {
     ]);
 
     // CANDADO DE SEGURIDAD: Verificar si ya existe un admin
-    $check = $pdo->query("SELECT COUNT(*) FROM system_users")->fetchColumn();
+    $check = $pdo->query("SELECT COUNT(*) FROM lead_system_users")->fetchColumn();
     if ($check > 0 && !isset($_GET['force'])) {
         die("El sistema ya tiene usuarios registrados. Por seguridad, elimina la carpeta /setup/ o contacta al soporte.");
     }
@@ -40,7 +40,7 @@ try {
     $password_hash = password_hash($password_plana, PASSWORD_BCRYPT);
 
     // 4. Inserción
-    $sql = "INSERT INTO system_users (username, password_hash) 
+    $sql = "INSERT INTO lead_system_users (username, password_hash) 
             VALUES (:user, :pass) 
             ON DUPLICATE KEY UPDATE password_hash = :pass";
     

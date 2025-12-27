@@ -37,7 +37,7 @@ try {
     $password_hash = password_hash($password_plana, PASSWORD_BCRYPT);
 
     // 3. Inserción/Actualización con lógica de seguridad
-    $sql = "INSERT INTO system_users (username, password_hash) 
+    $sql = "INSERT INTO lead_system_users (username, password_hash) 
             VALUES (:user, :pass) 
             ON DUPLICATE KEY UPDATE password_hash = :pass";
     

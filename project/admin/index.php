@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $username = $data['username'] ?? '';
         $password = $data['password'] ?? '';
 
-        $stmt = $pdo->prepare("SELECT id_user, username, password_hash FROM system_users WHERE username = ?");
+        $stmt = $pdo->prepare("SELECT id_user, username, password_hash FROM lead_system_users WHERE username = ?");
         $stmt->execute([$username]);
         $admin = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['admin_id'] = $admin['id_user'];
             $_SESSION['admin_user'] = $admin['username'];
             
-            $pdo->prepare("UPDATE system_users SET last_login = CURRENT_TIMESTAMP WHERE id_user = ?")
+            $pdo->prepare("UPDATE lead_system_users SET last_login = CURRENT_TIMESTAMP WHERE id_user = ?")
                 ->execute([$admin['id_user']]);
 
             echo json_encode(["status" => "success"]);

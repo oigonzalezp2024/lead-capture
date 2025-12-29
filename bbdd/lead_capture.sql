@@ -56,7 +56,7 @@ INSERT INTO `lead_survey_questions` (`id_question`, `codigo_pregunta`, `route`, 
 (6,  'A4', 'RUTA_A', '¿Prefieres que nosotros nos encarguemos de toda la parte técnica (servidores, seguridad)?', 'choice', 6, 1),
 (7,  'A5', 'RUTA_A', '¿Cuál es su ventana de tiempo ideal para el lanzamiento?', 'choice', 7, 1),
 (8,  'A6', 'RUTA_A', '¿Cuentas con un presupuesto estimado para esta etapa?', 'choice', 8, 1),
-(9,  'A7', 'RUTA_A', 'Describa brevemente el modelo de monetización o retorno esperado.', 'textarea', 9, 1),
+(9, 'A7', 'RUTA_A', 'Describa brevemente el modelo de monetización o retorno esperado.', 'textarea', 9, 1),
 -- Ruta C (Técnica)
 (10, 'C1', 'RUTA_C', '¿Qué stack tecnológico tienen en mente o qué infraestructura ya utilizan?', 'text', 10, 1),
 (11, 'C2', 'RUTA_C', '¿Tienen ya levantamiento de requerimientos o diseño en Figma?', 'choice', 11, 1),
@@ -64,8 +64,9 @@ INSERT INTO `lead_survey_questions` (`id_question`, `codigo_pregunta`, `route`, 
 (13, 'C4', 'RUTA_C', '¿Cuál es el reto técnico principal que enfrentan actualmente?', 'textarea', 13, 1),
 (14, 'C5', 'RUTA_C', '¿Requieren que el equipo trabaje bajo metodologías ágiles (Scrum)?', 'choice', 14, 1),
 -- Cierre
-(15, 'F1', 'COMMON', 'Nombre y Empresa.', 'text', 15, 1),
-(16, 'F2', 'COMMON', 'WhatsApp / Email.', 'text', 16, 1);
+(15,  'Q3', 'COMMON', '¿Quién toma la decisión final sobre la inversión en este proyecto?', 'choice', 15, 1),
+(16, 'F1', 'COMMON', 'Nombre y Empresa.', 'text', 16, 1),
+(17, 'F2', 'COMMON', 'WhatsApp / Email.', 'text', 17, 1);
 
 -- 2. OPCIONES (lead_question_options)
 -- Cada id_option es único y su id_question corresponde exactamente a la tabla anterior.
@@ -74,34 +75,32 @@ INSERT INTO `lead_question_options` (`id_option`, `id_question`, `option_label`,
 -- Opciones para Q1 (ID 1)
 (1, 1, 'Soy dueño de negocio/emprendedor.', 'CEO_FOUNDER', 'RUTA_A', 1),
 (2, 1, 'Soy líder técnico o ingeniero.', 'CTO_ENG', 'RUTA_C', 1),
-
 -- Opciones para Q2 (ID 2)
 (3, 2, 'Tengo una idea de negocio pero no sé de programación.', 'NO_TECNICO', 'RUTA_A', 1),
 (4, 2, 'Tengo claros los procesos, pero necesito el desarrollo.', 'INTERMEDIO', 'RUTA_A', 1),
 (5, 2, 'Soy técnico/ingeniero y busco un equipo externo.', 'TECNICO_SENIOR', 'RUTA_C', 1),
 (6, 2, 'Ya tengo un software pero es obsoleto y quiero rehacerlo.', 'RE-ENGINEERING', 'RUTA_C', 1),
-
--- Opciones para A4 (ID 6)
-(7, 6, 'Sí, delegación técnica total.', 'FULL_DELEGATE', 'RUTA_A', 1),
-(8, 6, 'No, cuento con equipo técnico propio.', 'INTERNAL_TEAM', 'RUTA_C', 1),
-
--- Opciones para A5 (ID 7)
-(9, 7, 'INMEDIATO (Menos de 3 meses).', 'SHORT_TERM', 'RUTA_A', 1),
-(10, 7, 'MEDIANO (3 a 6 meses).', 'MID_TERM', 'RUTA_A', 1),
-(11, 7, 'EXPLORANDO (Solo cotizando).', 'RESEARCH', 'RUTA_A', 1),
-
--- Opciones para A6 (ID 8)
-(12, 8, 'STARTUP (MVP económico).', 'BUDGET_STARTUP', 'RUTA_A', 1),
-(13, 8, 'CORPORATIVO (Calidad y escalabilidad).', 'BUDGET_CORP', 'RUTA_A', 1),
-(14, 8, 'PENDIENTE (Necesito asesoría).', 'BUDGET_CONSULT', 'RUTA_A', 1),
-
--- Opciones para C2 (ID 11)
-(15, 11, 'Proyecto cerrado (Llave en mano).', 'FIXED_PROJECT', 'RUTA_C', 1),
-(16, 11, 'Aumento de equipo (Staff Augmentation).', 'STAFF_AUG', 'RUTA_C', 1),
-
+-- Opciones para A4 (ID 7)
+(10, 6, 'Sí, delegación técnica total.', 'FULL_DELEGATE', 'RUTA_A', 1),
+(11, 6, 'No, cuento con equipo técnico propio.', 'INTERNAL_TEAM', 'RUTA_C', 1),
+-- Opciones para A5 (ID 8)
+(12, 7, 'INMEDIATO (Menos de 3 meses).', 'SHORT_TERM', 'RUTA_A', 1),
+(13, 7, 'MEDIANO (3 a 6 meses).', 'MID_TERM', 'RUTA_A', 1),
+(14, 7, 'EXPLORANDO (Solo cotizando).', 'RESEARCH', 'RUTA_A', 1),
+-- Opciones para A6 (ID 9)
+(15, 8, 'STARTUP (MVP económico).', 'BUDGET_STARTUP', 'RUTA_A', 1),
+(16, 8, 'CORPORATIVO (Calidad y escalabilidad).', 'BUDGET_CORP', 'RUTA_A', 1),
+(17, 8, 'PENDIENTE (Necesito asesoría).', 'BUDGET_CONSULT', 'RUTA_A', 1),
+-- Opciones para C2 (ID 12)
+(18, 11, 'Proyecto cerrado (Llave en mano).', 'FIXED_PROJECT', 'RUTA_C', 1),
+(19, 11, 'Aumento de equipo (Staff Augmentation).', 'STAFF_AUG', 'RUTA_C', 1),
 -- Opciones para C5 (ID 14)
-(17, 14, 'Sí (Ceremonias Scrum diarias).', 'AGILE_STRICT', 'F1', 1),
-(18, 14, 'No, preferimos gestión por hitos.', 'MILESTONES', 'F1', 1);
+(20, 14, 'Sí (Ceremonias Scrum diarias).', 'AGILE_STRICT', 'F1', 1),
+(21, 14, 'No, preferimos gestión por hitos.', 'MILESTONES', 'F1', 1),
+-- Opciones para Q3 (ID 15)
+(7, 15, 'Yo tomo la decisión directamente.', 'DECISION_MAKER', 'F1', 1),
+(8, 15, 'Un comité o junta directiva.', 'COMMITTEE', 'F1', 1),
+(9, 15, 'Estoy investigando para presentar opciones a mi jefe.', 'INFLUENCER', 'F1', 1);
 
 -- LLAVES Y RELACIONES -- 
 

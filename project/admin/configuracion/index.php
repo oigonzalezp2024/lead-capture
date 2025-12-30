@@ -16,6 +16,7 @@ if (!isset($_SESSION['admin_id'])) { header("Location: ../index.php"); exit; }
         <p>Usuario: <strong><?php echo $_SESSION['admin_user']; ?></strong></p>
         <nav>
             <a href="../seguimiento/" class="nav-link">📊 Seguimiento</a>
+            <a href="../preguntas/" class="nav-link">⚙️ Preguntas</a>
             <a href="../configuracion/" class="nav-link active">⚙️ Configuración</a>
             <a href="../../encuesta/" class="nav-link">✅ Encuesta</a>
             <a href="../logout.php" class="nav-link" style="margin-top:2rem; color:#f87171">Cerrar Sesión</a>

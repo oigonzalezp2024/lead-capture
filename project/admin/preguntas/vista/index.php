@@ -27,6 +27,23 @@ if (!isset($_SESSION['admin_id'])) {
 	<div class="container">
 		<div id="tabla"></div>
 	</div>
+	<!-- AGENTA AI -->
+	<div class="modal fade" id="AImodal" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-md" role="document">
+			<div class="modal-content">
+				<div class="modal-header" style="background-color: #85a5ff;color: white;">
+					<button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+					<h4 class="modal-title">Oscar</h4>
+				</div>
+				<div class="modal-body">
+					<p>Esta vista es un panel administrativo de gestión de base de datos diseñado para organizar la lógica de la encuesta adaptativa mediante preguntas comunes (COMMON), preguntas específicas para perfiles no técnicos (RUTA_A) y preguntas para perfiles técnicos (RUTA_C).</p></div>
+				<div class="modal-footer">
+					
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- MODAL PARA INSERTAR REGISTROS -->
 	<div class="modal fade" id="modalNuevo" tabindex="-1" role="dialog">
 		<div class="modal-dialog modal-md" role="document">
@@ -249,6 +266,7 @@ if (!isset($_SESSION['admin_id'])) {
 	</div>
 	<script type="text/javascript">
 		$(document).ready(function() {
+			$("#AImodal").modal('show');
 			// Carga inicial de la tabla
 			$('#tabla').load('componentes/vista_lead_survey_questions.php');
 

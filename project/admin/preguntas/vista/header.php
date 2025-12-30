@@ -10,6 +10,7 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
+                <li><a href="../../seguimiento/">Volver</a></li>
                 <li><a href="lead_survey_questions.php">Preguntas</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

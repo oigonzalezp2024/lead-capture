@@ -1,3 +1,12 @@
+<?php
+
+session_start();
+
+if (!isset($_SESSION['admin_id'])) {
+	header("location: ../../");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -28,10 +37,6 @@
 				</div>
 				<div class="modal-body">
 					<div class="row">
-						<div class="col-xs-6">
-							<label>ID Pregunta</label>
-							<input type="number" id="id_question" class="form-control input-sm">
-						</div>
 						<div class="col-xs-6">
 							<label>Código</label>
 							<input type="text" id="codigo_pregunta" class="form-control input-sm">

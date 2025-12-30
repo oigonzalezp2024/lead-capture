@@ -13,7 +13,7 @@
                 <li><a href="lead_survey_questions.php">Preguntas</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><?php echo "<a href='../modelo/salir.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión </a>" ?></li>
+                <li><?php echo "<a href='../../logout.php'><span class='glyphicon glyphicon-log-in'></span> Cerrar sesión </a>" ?></li>
             </ul>
         </div>
     </div>

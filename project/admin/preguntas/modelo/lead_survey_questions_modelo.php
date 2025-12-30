@@ -1,12 +1,19 @@
 <?php
+
+session_start();
+
 include 'conexion.php';
 $conn = conexion();
+
+if (!isset($_SESSION['admin_id'])) {
+    exit;
+}
+$id_user = $_SESSION['admin_id'];
 
 $accion = $_GET['accion'];
 
 if($accion == "insertar"){
 
-    $id_question = $_POST['id_question'];
     $codigo_pregunta = $_POST['codigo_pregunta'];
     $route = $_POST['route'];
     $question_text = $_POST['question_text'];
@@ -15,9 +22,9 @@ if($accion == "insertar"){
     $visible = $_POST['visible'];
 
     $sql="INSERT INTO lead_survey_questions(
-          id_question, codigo_pregunta, route, question_text, question_type, orden, visible
+          id_user, codigo_pregunta, route, question_text, question_type, orden, visible
           )VALUE(
-          '$id_question', '$codigo_pregunta', '$route', '$question_text', '$question_type', '$orden', '$visible')";
+          '$id_user', '$codigo_pregunta', '$route', '$question_text', '$question_type', '$orden', '$visible')";
 
     echo $consulta = mysqli_query($conn, $sql);
 }
@@ -33,6 +40,7 @@ elseif($accion == "modificar"){
     $visible = $_POST['visible'];
 
     $sql="UPDATE lead_survey_questions SET
+          id_user = '$id_user',
           codigo_pregunta = '$codigo_pregunta', 
           route = '$route', 
           question_text = '$question_text', 
@@ -49,7 +57,8 @@ elseif($accion == "borrar"){
     $id_question = $_POST['id_question'];
 
     $sql = "DELETE FROM lead_survey_questions
-            WHERE id_question = '$id_question'";
+            WHERE id_question = '$id_question'
+            AND id_user = '$id_user'";
 
     echo $consulta = mysqli_query($conn, $sql);
 }
@@ -57,22 +66,22 @@ elseif($accion == "borrar"){
 if($accion == "insertar_con_opciones"){
     $data = json_decode($_POST['data'], true);
     
-    $id = $data['id_question'];
     $cod = $data['codigo_pregunta'];
     $txt = $data['question_text'];
     
     // 1. Insertar Pregunta
-    $sqlPregunta = "INSERT INTO lead_survey_questions (id_question, codigo_pregunta, question_text) 
-                    VALUES ('$id', '$cod', '$txt')";
+    $sqlPregunta = "INSERT INTO lead_survey_questions (id_user, codigo_pregunta, question_text) 
+                    VALUES ('$id_user', '$cod', '$txt')";
     $res = mysqli_query($conn, $sqlPregunta);
+    $id = mysqli_insert_id($conn);
     
     if($res){
         // 2. Insertar Opciones
         foreach($data['opciones'] as $opt){
             $label = $opt['label'];
             $val = $opt['value'];
-            $sqlOpt = "INSERT INTO lead_question_options (id_question, option_label, option_value, visible) 
-                       VALUES ('$id', '$label', '$val', 1)";
+            $sqlOpt = "INSERT INTO lead_question_options (id_question, id_user, option_label, option_value, visible) 
+                       VALUES ('$id', '$id_user', '$label', '$val', 1)";
             mysqli_query($conn, $sqlOpt);
         }
         echo 1;
@@ -90,11 +99,11 @@ elseif($accion == "borrar_recursivo"){
 
     try {
         // 1. Eliminar todas las opciones asociadas a esta pregunta
-        $sqlOpciones = "DELETE FROM lead_question_options WHERE id_question = '$id_question'";
+        $sqlOpciones = "DELETE FROM lead_question_options WHERE id_question = '$id_question' AND id_user = '$id_user'";
         mysqli_query($conn, $sqlOpciones);
 
         // 2. Eliminar la pregunta
-        $sqlPregunta = "DELETE FROM lead_survey_questions WHERE id_question = '$id_question'";
+        $sqlPregunta = "DELETE FROM lead_survey_questions WHERE id_question = '$id_question' AND id_user = '$id_user'";
         mysqli_query($conn, $sqlPregunta);
 
         // Si todo salió bien, confirmar cambios

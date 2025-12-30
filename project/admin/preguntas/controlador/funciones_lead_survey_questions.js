@@ -101,7 +101,6 @@ function ejecutarAccionOpcion(accion) {
 // Función para capturar datos del modal de INSERCIÓN de preguntas
 function agregardatos() {
     let datos = {
-        id_question: $('#id_question').val(),
         codigo_pregunta: $('#codigo_pregunta').val(),
         route: $('#route').val(),
         question_text: $('#question_text').val(),
@@ -110,8 +109,8 @@ function agregardatos() {
         visible: $('#visible').val()
     };
 
-    if(datos.id_question == "" || datos.question_text == "") {
-        alert("ID y Texto de pregunta son obligatorios");
+    if(datos.question_text == "") {
+        alert("El texto de pregunta es obligatorio");
         return;
     }
 
@@ -213,7 +212,7 @@ function guardarTodo() {
         opciones: listaOpcionesTemporales // Enviamos el array aquí
     };
 
-    if (pregunta.id_question === "" || pregunta.opciones.length === 0) {
+    if (pregunta.opciones.length === 0) {
         alert("La pregunta debe tener al menos una opción");
         return;
     }

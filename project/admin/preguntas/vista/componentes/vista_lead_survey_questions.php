@@ -1,10 +1,20 @@
 <?php
+
+session_start();
+
 include_once '../../modelo/conexion.php';
+
+if (!isset($_SESSION['admin_id'])) {
+    exit;
+}
+$id_user = $_SESSION['admin_id'];
+
 $conn = conexion();
 
 function datos($conn): array
 {
-    $sql = 'SELECT 
+    $id_user = $_SESSION['admin_id'];
+    $sql = "SELECT 
         lsq.id_question lsq_id_question,
         lsq.codigo_pregunta lsq_codigo_pregunta,
         lsq.route lsq_route,
@@ -20,7 +30,8 @@ function datos($conn): array
         lqo.visible lqo_visible
         FROM `lead_question_options` lqo, lead_survey_questions lsq
         WHERE lsq.id_question = lqo.id_question
-        ORDER BY lsq.id_question';
+        AND lsq.id_user = $id_user
+        ORDER BY lsq.id_question";
     $result = mysqli_query($conn, $sql);
     $datos = [];
     while ($fila = mysqli_fetch_assoc($result)) {

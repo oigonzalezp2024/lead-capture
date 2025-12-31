@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    /* Seguridad y Rigor */
+    "target": "ES6",
+    "module": "ESNext",
+    "strict": true,                 /* Habilita todas las comprobaciones estrictas de tipos */
+    "noImplicitAny": true,          /* Prohíbe el uso de 'any' accidental */
+    "strictNullChecks": true,       /* Obliga a manejar 'null' y 'undefined' */
+    "strictFunctionTypes": true,    /* Comprobación fuerte de parámetros de funciones */
+    "noUnusedLocals": true,         /* Limpieza: evita variables que no se usan */
+    "noUnusedParameters": true,     /* Limpieza: evita parámetros que no se usan */
+    "noImplicitReturns": true,      /* Asegura que todas las rutas de una función devuelvan algo */
+    
+    /* Manejo del Entorno */
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "skipLibCheck": true,           /* Acelera la compilación ignorando errores en librerías externas */
+    "forceConsistentCasingInFileNames": true,
+    
+    /* Salida */
+    "outDir": "public/project/js",             /* Carpeta donde se generará el JS final */
+    "sourceMap": true               /* Permite depurar el código TS desde el navegador */
+  },
+  "include": ["src/**/*"],          /* Donde pondrás tus archivos .ts */
+  "exclude": ["node_modules"]
+}

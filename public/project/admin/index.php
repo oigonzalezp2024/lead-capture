@@ -1,8 +1,8 @@
 <?php
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../../../vendor/autoload.php';
 use Dotenv\Dotenv;
 
-$dotenv = Dotenv::createImmutable(__DIR__.'/../../');
+$dotenv = Dotenv::createImmutable(__DIR__.'/../../../');
 $dotenv->load();
 
 session_start();
@@ -79,6 +79,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button onclick="handleLogin()" id="login-btn">Iniciar Sesión</button>
     </div>
 
-    <script src="login_script.js"></script>
+    <script type="module" src="../js/auth/login.js"></script>
 </body>
 </html>

@@ -4,13 +4,13 @@
  * Alimentado por variables de entorno (.env).
  */
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../../../vendor/autoload.php';
 
 use Dotenv\Dotenv;
 
 // Cargar variables de entorno
 try {
-    $dotenv = Dotenv::createImmutable(__DIR__.'/../../');
+    $dotenv = Dotenv::createImmutable(__DIR__.'/../../../');
     $dotenv->load();
 } catch (Exception $e) {
     die("Error: No se pudo cargar el archivo .env");

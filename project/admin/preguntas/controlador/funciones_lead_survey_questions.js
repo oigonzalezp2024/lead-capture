@@ -260,7 +260,24 @@ function detalleform(base64Data) {
             
             // Llenar cabecera del modal
             tituloModal.innerText = datosPreguntaActual.texto;
-            infoPregunta.innerHTML = `<strong>Código:</strong> ${datosPreguntaActual.codigo} | <strong>Tipo:</strong> ${datosPreguntaActual.tipo} | <strong>Orden:</strong> ${datosPreguntaActual.orden}`;
+            contenido = `<strong>Código:</strong> ${datosPreguntaActual.codigo} | <strong>Tipo:</strong> ${datosPreguntaActual.tipo} | <strong>Orden:</strong> ${datosPreguntaActual.orden}`;
+            contenido += `<p id="info_pregunta_detalles" class="text-muted" style="margin:0;margin-bottom: 16px;margin-top: 16px;" "="">
+                Todos las preguntas deben tener un <strong>Código</strong> único por razones de análisis estadístico
+                </p><p id="info_pregunta_detalles" class="text-muted" style="margin:0;" "="">
+                Todos las preguntas deben tener un <strong>Tipo:</strong>
+                </p>
+                <ul>
+                <li><strong>"choise"</strong> hace referencia a las preguntas de selección múltiple, única respuesta. </li>
+                <li><strong>"text"</strong> campo de texto simple. </li>
+                <li><strong>"textarea"</strong> campo de cuadro textual para argumentar respuesta.</p></li>
+                </ul>
+                <p id="info_pregunta_detalles" class="text-muted" style="margin:0;margin-bottom: 16px;" "="">
+                Todos las preguntas deben tener una posición especifica, que establece un <strong>Orden</strong> de apreciación por parte del lector. </p>`;
+
+
+            infoPregunta.innerHTML = contenido;
+
+
             idPreguntaParaNuevaOpcion = datosPreguntaActual.id;
 
             // Llenar tabla de opciones

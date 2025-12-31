@@ -30,4 +30,4 @@ Homestead.json
 auth.json
 
 # Ignorar los archivos generados por TypeScript
-public/js/
+public/project/js

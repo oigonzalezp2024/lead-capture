@@ -45,6 +45,6 @@ if (!isset($_SESSION['admin_id'])) { header("Location: ../index.php"); exit; }
         </div>
     </div>
 
-    <script type="module" src="../../js/admin/configuracion/configuracion.js"></script>
+    <script type="module" src="../../js/project/admin/configuracion/configuracion.js"></script>
 </body>
 </html>

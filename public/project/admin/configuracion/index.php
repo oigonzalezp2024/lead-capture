@@ -18,6 +18,7 @@ if (!isset($_SESSION['admin_id'])) { header("Location: ../index.php"); exit; }
             <a href="../seguimiento/" class="nav-link">📊 Seguimiento</a>
             <a href="../preguntas/" class="nav-link">⚙️ Preguntas</a>
             <a href="../configuracion/" class="nav-link active">⚙️ Configuración</a>
+            <a href="../AIDeveloper/" class="nav-link">⚙️ AIDeveloper</a>
             <a href="../../encuesta/" class="nav-link">✅ Encuesta</a>
             <a href="../logout.php" class="nav-link" style="margin-top:2rem; color:#f87171">Cerrar Sesión</a>
         </nav>

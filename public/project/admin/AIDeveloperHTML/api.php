@@ -1,27 +1,7 @@
 <?php
 require_once '../../../../vendor/autoload.php';
 
-use App\Server\AIDeveloper\Exceptions\AiGenerationException;
-use App\Server\AIDeveloper\Exceptions\FileStorageException;
-
-use App\Server\AIDeveloper\Domain\IAgenteCSS;
-use App\Server\AIDeveloper\Domain\IConfigGeminiApi;
-use App\Server\AIDeveloper\Domain\ICurlRequest;
-use App\Server\AIDeveloper\Domain\IFileManager;
-use App\Server\AIDeveloper\Domain\ILeadCaptureGeminiApi;
-use App\Server\AIDeveloper\Domain\IOutputClean;
-use App\Server\AIDeveloper\Domain\IPromptConstructor;
-use App\Server\AIDeveloper\Domain\IScriptl;
-use App\Server\AIDeveloper\Domain\Prompt;
-
-use App\Server\AIDeveloper\Infrastructure\Api\ConfigGeminiApi;
-use App\Server\AIDeveloper\Infrastructure\Api\LeadCaptureGeminiApi;
-use App\Server\AIDeveloper\Infrastructure\Network\CurlRequest;
-use App\Server\AIDeveloper\Infrastructure\Storage\FileManager;
-use App\Server\AIDeveloper\Infrastructure\Utils\PromptConstructor;
-use App\Server\AIDeveloper\Infrastructure\Utils\OutputClean;
-use App\Server\AIDeveloper\Service\AgenteCSS;
-use App\Server\AIDeveloper\Application\Script;
+use App\Server\AIDeveloper\Application\ScriptHTML;
 
 header('Content-Type: application/json; charset=utf-8');
 
@@ -31,9 +11,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $apiKey     = $_POST['apiKey'] ?? '';
         $model      = $_POST['model'] ?? 'gemini-1.5-flash';
         $sugerencia = $_POST['sugerencia'] ?? '';
-        $rutaHTML   = './index.html';
-        $rutaCSS    = './style.css';
-        $rutaJS     = './script.js';
+        $rutaHTML   = '../taller/index.html';
+        $rutaCSS    = '../taller/style.css';
+        $rutaJS     = '../../js/project/admin/taller/taller.js';
         // 2. Validación
         if (
             empty($apiKey) || 
@@ -44,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         // 3. Ejecución
-        $script = new Script($apiKey, $model);
+        $script = new ScriptHTML($apiKey, $model);
         $resultMessage = $script->cambiaCSS($rutaHTML, $rutaCSS, $rutaJS, $sugerencia);
 
         // 4. Respuesta Exitosa

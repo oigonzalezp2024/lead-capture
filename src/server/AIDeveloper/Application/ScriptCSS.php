@@ -23,7 +23,7 @@ use App\Server\AIDeveloper\Infrastructure\Utils\PromptConstructorCSS;
 use App\Server\AIDeveloper\Infrastructure\Utils\OutputClean;
 use App\Server\AIDeveloper\Service\AgenteCSS;
 
-class Script implements IScriptL
+class ScriptCSS implements IScriptL
 {
     private string $apiKey;
     private string $model;

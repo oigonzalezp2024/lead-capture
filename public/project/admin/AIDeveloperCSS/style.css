@@ -1,0 +1,247 @@
+:root {
+    --primary: #004080; /* Deep authoritative blue */
+    --accent: #CC0000; /* Strong red for highlights/errors */
+    --bg: #f0f2f5; /* Light gray background */
+    --card: #ffffff; /* White card background */
+    --text: #333333; /* Dark gray for main text */
+    --secondary-text: #666666; /* Lighter gray for secondary text */
+    --border-color: #dcdcdc; /* Light gray for borders */
+    --table-header-bg: var(--primary); /* Use primary for table headers */
+    --table-header-text: white;
+    --table-row-hover-bg: #e9f0f7; /* Light blue for row hover */
+    --table-stripe-bg: #f8f8f8; /* Very light gray for striped rows */
+}
+
+body {
+    font-family: 'Roboto', 'Arial', sans-serif; /* Professional sans-serif */
+    background-color: var(--bg);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    line-height: 1.6; /* Improved readability */
+}
+
+.container { width: 100%; max-width: 550px; /* Slightly wider for a news feel */ }
+
+header {
+    text-align: center; /* Center header for a more formal look */
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-size: 2rem; /* Larger, more prominent headline */
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+    font-weight: 700; /* Bolder */
+}
+
+header p {
+    color: var(--secondary-text);
+    font-size: 1rem;
+}
+
+.card {
+    background: var(--card);
+    padding: 2.5rem; /* More generous padding */
+    border-radius: 8px; /* Slightly less rounded */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); /* Softer, more refined shadow */
+    border: 1px solid var(--border-color); /* Add a subtle border */
+}
+
+.form-group { margin-bottom: 1.75rem; /* Slightly more spacing */ }
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.6rem; /* Slightly more spacing */
+    font-size: 0.95rem; /* Slightly larger label */
+    color: var(--text);
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 0.85rem; /* Slightly more padding */
+    border: 1px solid var(--border-color);
+    border-radius: 4px; /* Sharper corners */
+    box-sizing: border-box;
+    font-size: 1rem;
+    color: var(--text);
+    background-color: #fdfdfd; /* Slightly off-white input background */
+    transition: border-color 0.2s ease-in-out;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary); /* Highlight on focus */
+    box-shadow: 0 0 0 2px rgba(0, 64, 128, 0.2); /* Subtle focus ring */
+}
+
+button {
+    width: 100%;
+    padding: 1.1rem; /* More prominent button */
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 4px; /* Sharper corners */
+    font-weight: 700; /* Bolder text */
+    cursor: pointer;
+    position: relative;
+    font-size: 1.05rem; /* Slightly larger font */
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+}
+
+button:hover {
+    background-color: #005099; /* Slightly darker on hover */
+    transform: translateY(-1px); /* Subtle lift effect */
+}
+
+button:disabled {
+    opacity: 0.6; /* Slightly more opaque when disabled */
+    cursor: not-allowed;
+    background-color: var(--primary); /* Keep primary color, just reduce opacity */
+    transform: none;
+}
+
+/* Loader animado */
+.loader {
+    display: none;
+    width: 22px; /* Slightly larger loader */
+    height: 22px;
+    border: 3px solid rgba(255,255,255,0.4); /* Slightly more visible border */
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.status-box {
+    margin-top: 2rem; /* More spacing */
+    padding: 1.1rem; /* More padding */
+    border-radius: 4px; /* Sharper corners */
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-align: center; /* Center status messages */
+}
+
+.status-box.success {
+    background: #e6ffe6; /* Lighter green */
+    color: #006600; /* Darker green text */
+    border: 1px solid #99e699; /* Green border */
+}
+.status-box.error {
+    background: #ffe6e6; /* Lighter red */
+    color: #CC0000; /* Use accent red for error text */
+    border: 1px solid #ff9999; /* Red border */
+}
+.hidden { display: none; }
+
+/* --- Product Table Design --- */
+.product-table-wrapper { /* Optional wrapper for responsiveness or shadow */
+    margin-top: 2rem;
+    background: var(--card);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    overflow-x: auto; /* For responsive tables */
+    border: 1px solid var(--border-color);
+}
+
+table.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0; /* Remove default table margin */
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+table.product-table thead {
+    background-color: var(--table-header-bg);
+    color: var(--table-header-text);
+}
+
+table.product-table th {
+    padding: 1rem 1.2rem;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid var(--primary); /* Stronger bottom border for header */
+}
+
+table.product-table tbody tr {
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s ease-in-out;
+}
+
+table.product-table tbody tr:last-child {
+    border-bottom: none; /* No border for the last row */
+}
+
+table.product-table tbody tr:nth-child(even) {
+    background-color: var(--table-stripe-bg); /* Zebra striping */
+}
+
+table.product-table tbody tr:hover {
+    background-color: var(--table-row-hover-bg); /* Hover effect */
+}
+
+table.product-table td {
+    padding: 0.9rem 1.2rem;
+    text-align: left;
+    color: var(--text);
+}
+
+/* Specific column styling if needed, e.g., for price */
+table.product-table td:nth-child(3) { /* Assuming price is the 3rd column */
+    text-align: right;
+    font-weight: 500;
+    color: var(--primary); /* Highlight price */
+}
+
+/* Responsive table behavior for smaller screens */
+@media screen and (max-width: 600px) {
+    table.product-table thead {
+        display: none; /* Hide table headers on small screens */
+    }
+
+    table.product-table, table.product-table tbody, table.product-table tr, table.product-table td {
+        display: block; /* Make table elements behave like block elements */
+        width: 100%;
+    }
+
+    table.product-table tr {
+        margin-bottom: 1rem;
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+    }
+
+    table.product-table td {
+        text-align: right;
+        padding-left: 50%; /* Space for pseudo-element label */
+        position: relative;
+        border: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    table.product-table td:last-child {
+        border-bottom: none;
+    }
+
+    table.product-table td::before {
+        content: attr(data-label); /* Use data-label attribute for pseudo-label */
+        position: absolute;
+        left: 10px;
+        width: calc(50% - 20px);
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: 600;
+        color: var(--secondary-text);
+    }
+
+    /* Specific labels for product table columns */
+    table.product-table td:nth-of-type(1)::before { content: "ID Producto"; }
+    table.product-table td:nth-of-type(2)::before { content: "Nombre"; }
+    table.product-table td:nth-of-type(3)::before { content: "Precio"; }
+}

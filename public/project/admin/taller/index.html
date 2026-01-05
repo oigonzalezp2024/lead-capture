@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Bodega</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema de Control de Bodega</h1>
+        <nav>
+            <ul>
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#inventario">Inventario</a></li>
+                <li><a href="#movimientos">Movimientos</a></li>
+                <li><a href="#reportes">Reportes</a></li>
+                <li><a href="#configuracion">Configuración</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="dashboard">
+            <h2>Dashboard General</h2>
+            <div class="dashboard-grid">
+                <div class="card">
+                    <h3>Productos en Stock</h3>
+                    <p>Total: <span id="total-productos">XXX</span></p>
+                    <!-- Placeholder para un gráfico o resumen rápido -->
+                </div>
+                <div class="card">
+                    <h3>Últimos Movimientos</h3>
+                    <ul>
+                        <li>Entrada: Producto A (10 unidades) - 2023-10-26</li>
+                        <li>Salida: Producto B (5 unidades) - 2023-10-25</li>
+                        <!-- Más movimientos -->
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Alertas de Stock Mínimo</h3>
+                    <ul>
+                        <li>Producto C: Quedan 3 unidades</li>
+                        <!-- Más alertas -->
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="inventario">
+            <h2>Gestión de Inventario</h2>
+
+            <div class="inventory-controls">
+                <button id="btn-add-product" class="btn-primary">Añadir Nuevo Producto</button>
+                <div class="search-bar">
+                    <input type="text" id="search-product-input" placeholder="Buscar producto...">
+                    <button id="btn-search-product" class="btn-secondary">Buscar</button>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="inventory-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Cantidad</th>
+                            <th>Ubicación</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="inventory-table-body">
+                        <!-- Las filas de productos se cargarán aquí dinámicamente con JavaScript -->
+                        <tr data-product-id="001">
+                            <td>001</td>
+                            <td>Producto X</td>
+                            <td>150</td>
+                            <td>Aisle 1, Shelf 3</td>
+                            <td>
+                                <button class="btn-edit-product" data-product-id="001">Editar</button>
+                                <button class="btn-delete-product" data-product-id="001">Eliminar</button>
+                            </td>
+                        </tr>
+                        <tr data-product-id="002">
+                            <td>002</td>
+                            <td>Producto Y</td>
+                            <td>75</td>
+                            <td>Aisle 2, Shelf 1</td>
+                            <td>
+                                <button class="btn-edit-product" data-product-id="002">Editar</button>
+                                <button class="btn-delete-product" data-product-id="002">Eliminar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Modal/Formulario para Añadir/Editar Productos (oculto por defecto, controlado por JS) -->
+            <div id="product-form-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-button" id="close-product-modal">&times;</span>
+                    <h3><span id="form-title">Añadir</span> Producto</h3>
+                    <form id="product-form">
+                        <input type="hidden" id="product-id-field">
+                        <div class="form-group">
+                            <label for="product-name">Nombre:</label>
+                            <input type="text" id="product-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="product-quantity">Cantidad:</label>
+                            <input type="number" id="product-quantity" required min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="product-location">Ubicación:</label>
+                            <input type="text" id="product-location">
+                        </div>
+                        <button type="submit" class="btn-primary" id="btn-save-product">Guardar</button>
+                        <button type="button" class="btn-secondary" id="btn-cancel-product">Cancelar</button>
+                    </form>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="movimientos" >
+            <h2>Registro de Movimientos</h2>
+            <button class="btn-primary">Registrar Entrada</button>
+            <button class="btn-secondary">Registrar Salida</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Tipo</th>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Responsable</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2023-10-26</td>
+                        <td>Entrada</td>
+                        <td>Producto A</td>
+                        <td>10</td>
+                        <td>Juan Pérez</td>
+                    </tr>
+                    <!-- Más filas de movimientos -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Otras secciones como Reportes y Configuración pueden seguir una estructura similar -->
+
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Sistema de Control de Bodega. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="../../js/project/admin/taller/taller.js"></script>
+    
+</body>
+</html>

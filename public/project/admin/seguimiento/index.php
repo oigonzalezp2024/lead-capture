@@ -1,5 +1,8 @@
 <?php
 session_start();
+
+require_once '../sidebar.php';
+
 if (!isset($_SESSION['admin_id'])) { header("Location: index.php"); exit; }
 ?>
 <!DOCTYPE html>
@@ -11,19 +14,9 @@ if (!isset($_SESSION['admin_id'])) { header("Location: index.php"); exit; }
     <link rel="stylesheet" href="../admin_style.css">
 </head>
 <body>
-    <aside class="sidebar">
-        <h2>SISTEMA ADMIN</h2>
-        <p>Usuario: <strong><?php echo $_SESSION['admin_user']; ?></strong></p>
-        <nav>
-            <a href="../seguimiento/" class="nav-link active">📊 Seguimiento</a>
-            <a href="../preguntas/" class="nav-link">⚙️ Preguntas</a>
-            <a href="../configuracion/" class="nav-link">⚙️ Configuración</a>
-            <a href="../AIDeveloper/" class="nav-link">⚙️ AIDeveloper</a>
-            <a href="../../encuesta/" class="nav-link">✅ Encuesta</a>
-            <a href="../logout.php" class="nav-link" style="margin-top:2rem; color:#f87171">Cerrar Sesión</a>
-        </nav>
-    </aside>
-
+    <?php
+    sidebar();
+    ?>
     <div class="content">
         <h1>Prospectos Registrados</h1>
         <table class="main-table">

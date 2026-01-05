@@ -19,11 +19,12 @@ use App\Server\AIDeveloper\Infrastructure\Api\ConfigGeminiApi;
 use App\Server\AIDeveloper\Infrastructure\Api\LeadCaptureGeminiApi;
 use App\Server\AIDeveloper\Infrastructure\Network\CurlRequest;
 use App\Server\AIDeveloper\Infrastructure\Storage\FileManager;
-use App\Server\AIDeveloper\Infrastructure\Utils\PromptConstructorCSS;
+use App\Server\AIDeveloper\Infrastructure\Utils\PromptConstructor;
+use App\Server\AIDeveloper\Infrastructure\Utils\PromptConstructorHTML;
 use App\Server\AIDeveloper\Infrastructure\Utils\OutputClean;
 use App\Server\AIDeveloper\Service\AgenteCSS;
 
-class Script implements IScriptL
+class ScriptHTML implements IScriptL
 {
     private string $apiKey;
     private string $model;
@@ -40,9 +41,9 @@ class Script implements IScriptL
 
         $fileManager = new FileManager();
 
-        $agenteCSS = new AgenteCSS(
+        $agenteHTML = new AgenteCSS(
             new LeadCaptureGeminiApi($apiKey, $model),
-            new PromptConstructorCSS(
+            new PromptConstructorHTML(
                 new Prompt(
                     $fileManager->read($rutaHTML),
                     $fileManager->read($rutaCSS),
@@ -55,13 +56,13 @@ class Script implements IScriptL
             new OutputClean()
         );
 
-        $agenteCSS->process();
+        $agenteHTML->process();
 
-        $nuevoContenidoCSS = $agenteCSS->output();
+        $nuevoContenidoHTML = $agenteHTML->output();
 
-        if (!empty($nuevoContenidoCSS)) {
-            if ($fileManager->save($rutaCSS, $nuevoContenidoCSS)) {
-                return "El CSS ha sido actualizado con éxito.";
+        if (!empty($nuevoContenidoHTML)) {
+            if ($fileManager->save($rutaHTML, $nuevoContenidoHTML)) {
+                return "El HTML ha sido actualizado con éxito.";
             } else {
                 return "Error al escribir en el archivo.";
             }

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI UI Customizer</title>
+    <script>
+        // Esto añade automáticamente un número de versión al CSS basado en el tiempo
+        document.write('<link rel="stylesheet" href="style.css?v=' + new Date().getTime() + '">');
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Generador UI con Gemini</h1>
+            <p>Modifica el estilo de tu encuesta mediante lenguaje natural.</p>
+        </header>
+
+        <div class="card">
+            <div class="form-group">
+                <label for="apiKey">Gemini API Key</label>
+                <input type="password" id="apiKey" placeholder="AIzaSy...">
+            </div>
+
+            <div class="form-group">
+                <label for="model">Modelo</label>
+                <select id="model">
+                    <option value="gemini-2.5-flash">Gemini 2.5 Flash (Rápido)</option>
+                    <option value="gemini-1.5-flash">Gemini 1.5 Flash (Rápido)</option>
+                    <option value="gemini-1.5-pro">Gemini 1.5 Pro (Complejo)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="sugerencia">¿Qué cambios quieres hacer?</label>
+                <textarea id="sugerencia" rows="4" placeholder="Ej: Haz que el diseño sea minimalista con tonos pastel y bordes redondeados..."></textarea>
+            </div>
+
+            <button id="btnGenerar" onclick="procesarCambios()">
+                <span class="btn-text">Aplicar Cambios</span>
+                <div class="loader" id="loader"></div>
+            </button>
+        </div>
+
+        <div id="statusMessage" class="status-box hidden"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
